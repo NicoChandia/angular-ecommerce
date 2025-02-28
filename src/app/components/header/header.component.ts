@@ -7,15 +7,18 @@ import { RouterLink } from '@angular/router';
   selector: 'app-header',
   imports: [PrimaryButtonComponent, RouterLink ],
   template: `
-   <div class="bg-slate-100 px-4 py-3 shadow-md flex justify-between items-center relative">
-  <div class="flex-grow text-center">
-    <button class="text-xl font-bold tracking-wider" routerLink="/">
+ <div class="bg-slate-100 px-4 py-3 shadow-md flex flex-col md:flex-row gap-2 justify-between items-center">
+  <!-- Título - Centrado en móvil, izquierda en desktop -->
+  <div class="md:flex-grow text-center md:text-left">
+    <button class="text-lg md:text-xl font-bold tracking-wider" routerLink="/">
       🛒 ECOMMERCE 🛒
     </button>
   </div>
   
-  <div class="absolute right-4">
+  <!-- Botón del carrito - Derecha en todas las pantallas -->
+  <div class="w-full md:w-auto flex justify-end">
     <app-primary-button 
+      class="whitespace-nowrap text-sm md:text-base"
       [label]="'Cart (' + cartService.cart().length + ')'"
       routerLink="/cart"
     />
