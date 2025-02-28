@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { Product } from '../../models/products.model';
 import { ProductCardComponent } from "./product-card/product-card.component";
 import { CommonModule } from '@angular/common';
+import { environment } from '../../../environments/environment.prod';
 
 @Component({
   selector: 'app-products-list',
@@ -27,7 +28,7 @@ import { CommonModule } from '@angular/common';
 export class ProductsListComponent {
 
   async ngOnInit(){
-    const res = await fetch('https://fakestoreapi.com/products');
+    const res = await fetch(`${environment.apiUrl}/products`);
     const data = await res.json();
     this.products.set(data);
   }
